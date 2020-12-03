@@ -2,6 +2,7 @@ package main
 
 import (
 	"advent2020/day1"
+	"advent2020/day1part2"
 	"fmt"
 	"io/ioutil"
 	"strconv"
@@ -14,6 +15,7 @@ func readFile(filename string) []string {
 }
 
 func main() {
+	// Day1
 	rawInput := readFile("day1/input.txt")
 	input := make([]int, len(rawInput))
 
@@ -24,4 +26,8 @@ func main() {
 
 	day1Solution, _ := day1.SolveProblem1(input)
 	fmt.Println("day1 solution: ", day1Solution)
+
+	// Day1Part2
+	day1part2Solution, _ := day1part2.SolveProblem2(input)
+	fmt.Println("day1part2 solution: ", day1part2Solution)
 }
