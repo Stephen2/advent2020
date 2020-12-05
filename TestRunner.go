@@ -5,6 +5,8 @@ import (
 	"advent2020/day1part2"
 	"advent2020/day2"
 	"advent2020/day2part2"
+	"advent2020/day3"
+	"advent2020/day3part2"
 	"fmt"
 	"io/ioutil"
 	"strconv"
@@ -37,4 +39,15 @@ func main() {
 	passwords := readFile("day2/input.txt")
 	fmt.Println("day2:", day2.Solve(passwords))
 	fmt.Println("day2part2:", day2part2.SolvePart2(passwords))
+
+	// Day3
+	mapLines := readFile("day3/input.txt")
+	println("day3:", day3.Solve(mapLines, 3))
+	a := day3part2.Solve(mapLines, 1, 1)
+	b := day3part2.Solve(mapLines, 3, 1)
+	c := day3part2.Solve(mapLines, 5, 1)
+	d := day3part2.Solve(mapLines, 7, 1)
+	e := day3part2.Solve(mapLines, 1, 2)
+	println(a, b, c, d, e)
+	println("day3part2:", a*b*c*d*e)
 }
