@@ -17,5 +17,5 @@ func SolveProblem1(numbers []int) (int, error) {
 		}
 	}
 
-	return 0, fmt.Errorf("No match found")
+	return 0, fmt.Errorf("no match found")
 }

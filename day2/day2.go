@@ -7,7 +7,7 @@ import (
 
 func isValid(password string) bool {
 	// e.g., 4-7 z: zzzfzlzzz
-	re := regexp.MustCompile("^(\\d*)\\-(\\d*) (.): (.*)$")
+	re := regexp.MustCompile(`^(\d*)\-(\d*) (.): (.*)$`)
 	matches := re.FindStringSubmatch(password)
 
 	min, _ := strconv.Atoi(matches[1])
