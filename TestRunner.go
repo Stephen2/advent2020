@@ -3,6 +3,8 @@ package main
 import (
 	"advent2020/day1"
 	"advent2020/day1part2"
+	"advent2020/day2"
+	"advent2020/day2part2"
 	"fmt"
 	"io/ioutil"
 	"strconv"
@@ -25,9 +27,14 @@ func main() {
 	}
 
 	day1Solution, _ := day1.SolveProblem1(input)
-	fmt.Println("day1 solution: ", day1Solution)
+	fmt.Println("day1 solution:", day1Solution)
 
 	// Day1Part2
 	day1part2Solution, _ := day1part2.SolveProblem2(input)
-	fmt.Println("day1part2 solution: ", day1part2Solution)
+	fmt.Println("day1part2 solution:", day1part2Solution)
+
+	// Day2
+	passwords := readFile("day2/input.txt")
+	fmt.Println("day2:", day2.Solve(passwords))
+	fmt.Println("day2part2:", day2part2.SolvePart2(passwords))
 }
