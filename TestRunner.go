@@ -8,6 +8,7 @@ import (
 	"advent2020/day3"
 	"advent2020/day3part2"
 	"advent2020/day4"
+	"advent2020/day5"
 	"fmt"
 	"io/ioutil"
 	"strconv"
@@ -56,4 +57,9 @@ func main() {
 	rawPassportData := readFile("day4/input.txt")
 	println("day4:", day4.Solve(rawPassportData, day4.IsValid))
 	println("day4part2:", day4.Solve(rawPassportData, day4.IsValidComplex))
+
+	// Day5
+	rawSeatInfo := readFile("day5/input.txt")
+	println("day5:", day5.Solve(rawSeatInfo))
+	println("day5part2:", day5.SolvePart2(rawSeatInfo))
 }
