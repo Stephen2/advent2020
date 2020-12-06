@@ -7,6 +7,7 @@ import (
 	"advent2020/day2part2"
 	"advent2020/day3"
 	"advent2020/day3part2"
+	"advent2020/day4"
 	"fmt"
 	"io/ioutil"
 	"strconv"
@@ -50,4 +51,9 @@ func main() {
 	e := day3part2.Solve(mapLines, 1, 2)
 	println(a, b, c, d, e)
 	println("day3part2:", a*b*c*d*e)
+
+	// Day4
+	rawPassportData := readFile("day4/input.txt")
+	println("day4:", day4.Solve(rawPassportData, day4.IsValid))
+	println("day4part2:", day4.Solve(rawPassportData, day4.IsValidComplex))
 }
