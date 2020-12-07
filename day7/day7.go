@@ -7,6 +7,7 @@ import (
 )
 
 type BagRule struct {
+	colour     string
 	canContain map[string]int
 }
 
@@ -32,6 +33,7 @@ func rawRuleToRule(rawRule string) (string, BagRule) {
 	}
 
 	return colour, BagRule{
+		colour:     colour,
 		canContain: canContain,
 	}
 }
@@ -59,7 +61,7 @@ func bagCanContain(colour string, rule BagRule, allRules map[string]BagRule) boo
 	return false
 }
 
-func Solve(rawRules []string) int {
+func getRules(rawRules []string) map[string]BagRule {
 	allRules := make(map[string]BagRule)
 
 	for _, rawRule := range rawRules {
@@ -67,6 +69,11 @@ func Solve(rawRules []string) int {
 		allRules[colour] = rule
 	}
 
+	return allRules
+}
+
+func Solve(rawRules []string) int {
+	allRules := getRules(rawRules)
 	bagsThatCanContainShinyGold := make([]BagRule, 0)
 
 	for _, rule := range allRules {
@@ -76,4 +83,30 @@ func Solve(rawRules []string) int {
 	}
 
 	return len(bagsThatCanContainShinyGold)
+}
+
+type ContainedBag struct {
+	colour  string
+	numBags int
+}
+
+func SolvePart2(rawRules []string) int {
+	allRules := getRules(rawRules)
+	toCheck := []ContainedBag{}
+	toCheck = append(toCheck, ContainedBag{colour: "shiny gold", numBags: 1})
+	requiredBags := 0
+
+	for len(toCheck) > 0 {
+		rule := allRules[toCheck[0].colour]
+
+		for containedColour, containedNumBags := range rule.canContain {
+			bagsToAdd := containedNumBags * toCheck[0].numBags
+			requiredBags += bagsToAdd
+			toCheck = append(toCheck, ContainedBag{colour: containedColour, numBags: bagsToAdd})
+		}
+
+		toCheck = toCheck[1:]
+	}
+
+	return requiredBags
 }

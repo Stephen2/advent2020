@@ -73,4 +73,5 @@ func main() {
 	// Day7
 	rawRules := readFile("day7/input.txt")
 	println("day7:", day7.Solve(rawRules))
+	println("day7part2:", day7.SolvePart2(rawRules))
 }
