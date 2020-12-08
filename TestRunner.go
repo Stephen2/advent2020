@@ -11,6 +11,7 @@ import (
 	"advent2020/day5"
 	"advent2020/day6"
 	"advent2020/day7"
+	"advent2020/day8"
 	"fmt"
 	"io/ioutil"
 	"strconv"
@@ -74,4 +75,9 @@ func main() {
 	rawRules := readFile("day7/input.txt")
 	println("day7:", day7.Solve(rawRules))
 	println("day7part2:", day7.SolvePart2(rawRules))
+
+	// Day8
+	rawInstructions := readFile("day8/input.txt")
+	println("day8:", day8.Solve(rawInstructions))
+	println("day8part2:", day8.SolvePart2(rawInstructions))
 }
