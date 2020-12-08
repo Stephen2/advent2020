@@ -53,38 +53,7 @@ func getInstructions(rawInstructions []string) []Instruction {
 	return instructions
 }
 
-func doesProgramHaveInfiniteLoop(instructions []Instruction) bool {
-	executed := map[int]struct{}{}
-	instructionNum := 0
-
-	for {
-		// Finished execution
-		if instructionNum == len(instructions) {
-			return false
-		}
-
-		instruction := instructions[instructionNum]
-
-		if _, ok := executed[instructionNum]; ok {
-			return true
-		}
-
-		executed[instructionNum] = struct{}{}
-
-		switch instruction.operation {
-		case acc:
-			instructionNum++
-
-		case jmp:
-			instructionNum += instruction.argument
-
-		case nop:
-			instructionNum++
-		}
-	}
-}
-
-func runProgram(instructions []Instruction) int {
+func runProgram(instructions []Instruction) (int, bool) {
 	// NOTE: will simply stop on infinite loops and return current acc
 	executed := map[int]struct{}{}
 	accumulator := 0
@@ -99,7 +68,7 @@ func runProgram(instructions []Instruction) int {
 		instruction := instructions[instructionNum]
 
 		if _, ok := executed[instructionNum]; ok {
-			return accumulator
+			return accumulator, false
 		}
 
 		executed[instructionNum] = struct{}{}
@@ -117,13 +86,14 @@ func runProgram(instructions []Instruction) int {
 		}
 	}
 
-	return accumulator
+	return accumulator, true
 }
 
 func Solve(rawInstructions []string) int {
 	instructions := getInstructions(rawInstructions)
+	accumulator, _ := runProgram(instructions)
 
-	return runProgram(instructions)
+	return accumulator
 }
 
 func SolvePart2(rawInstructions []string) int {
@@ -136,8 +106,8 @@ func SolvePart2(rawInstructions []string) int {
 			copy(modifiedProgram, instructions)
 			modifiedProgram[i].operation = jmp
 
-			if !doesProgramHaveInfiniteLoop(modifiedProgram) {
-				return runProgram(modifiedProgram)
+			if accumulator, doesExit := runProgram(modifiedProgram); doesExit {
+				return accumulator
 			}
 
 		case jmp:
@@ -145,8 +115,8 @@ func SolvePart2(rawInstructions []string) int {
 			copy(modifiedProgram, instructions)
 			modifiedProgram[i].operation = nop
 
-			if !doesProgramHaveInfiniteLoop(modifiedProgram) {
-				return runProgram(modifiedProgram)
+			if accumulator, doesExit := runProgram(modifiedProgram); doesExit {
+				return accumulator
 			}
 		}
 	}
