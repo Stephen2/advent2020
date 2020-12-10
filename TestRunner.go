@@ -90,7 +90,8 @@ func main() {
 	println("day9part2:", day9.SolvePart2(rawNumbers, day9Solution))
 
 	// Day10
-	rawJoltages := readFile("day10/input.txt")
-	println("day10:", day10.Solve(rawJoltages))
-	println("day10part2:", day10.SolvePart2(rawJoltages))
+	rawJoltages := readFile("day10/sample-input2.txt")
+	// println("day10:", day10.Solve(rawJoltages))
+	// println("day10part2:", day10.SolvePart2(rawJoltages))
+	println("day10part2:", day10.SolvePart2Alt(rawJoltages))
 }
