@@ -3,6 +3,7 @@ package main
 import (
 	"advent2020/day1"
 	"advent2020/day10"
+	"advent2020/day11"
 	"advent2020/day1part2"
 	"advent2020/day2"
 	"advent2020/day2part2"
@@ -90,8 +91,13 @@ func main() {
 	println("day9part2:", day9.SolvePart2(rawNumbers, day9Solution))
 
 	// Day10
-	rawJoltages := readFile("day10/sample-input2.txt")
-	// println("day10:", day10.Solve(rawJoltages))
-	// println("day10part2:", day10.SolvePart2(rawJoltages))
-	println("day10part2:", day10.SolvePart2Alt(rawJoltages))
+	rawJoltages := readFile("day10/input.txt")
+	println("day10:", day10.Solve(rawJoltages))
+	println("day10part2:", day10.SolvePart2(rawJoltages))
+	// println("day10part2:", day10.SolvePart2Alt(rawJoltages))
+
+	// Day11
+	rawSeats := readFile("day11/input.txt")
+	println("day11:", day11.Solve(rawSeats))
+	println("day11part2:", day11.SolvePart2(rawSeats))
 }
