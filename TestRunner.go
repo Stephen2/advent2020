@@ -5,6 +5,7 @@ import (
 	"advent2020/day10"
 	"advent2020/day11"
 	"advent2020/day12"
+	"advent2020/day13"
 	"advent2020/day1part2"
 	"advent2020/day2"
 	"advent2020/day2part2"
@@ -105,4 +106,10 @@ func main() {
 	// Day12
 	rawDirections := readFile("day12/input.txt")
 	println("day12:", day12.Solve(rawDirections))
+	println("day12part2:", day12.SolvePart2(rawDirections))
+
+	// Day13
+	rawBusInput := readFile("day13/input.txt")
+	println("day13:", day13.Solve(rawBusInput))
+	println("day13part2:", day13.SolvePart2(rawBusInput))
 }
